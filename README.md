@@ -14,7 +14,7 @@ Le joueur possédant le 2♣ commence la première levée en jouant cette carte.
   
 La levée est remportée par le joueur ayant joué la carte la plus haute de la couleur demandée. Le vainqueur de la levée commence la suivante.
 
-##Objectif du jeu
+## Objectif du jeu
 
 Le but est d’éviter de marquer des points en évitant de remporter certaines cartes :
 
