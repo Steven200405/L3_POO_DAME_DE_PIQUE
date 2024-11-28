@@ -22,16 +22,18 @@ Le but est d’éviter de marquer des points en évitant de remporter certaines 
   - La Dame de Pique vaut 13 points.
   - Cependant, un joueur peut choisir de tenter un "Grand Chelem" (ou "Faire la Lune") : capturer tous les cœurs et la Dame de Pique. Si réussi, ce joueur marque 0 point et les autres joueurs marquent chacun 26 points.
 
-
-
 ## Fin de la partie
 
 La partie continue sur plusieurs manches jusqu’à ce qu’un joueur atteigne ou dépasse un score de 100. Le gagnant est celui ayant le score le plus bas à la fin de la partie.
 
 ### Détail des classes principales
 
-
+- LocalDameDePiqueGame la version du jeu supportant le jeu en local
+- DameDePiqueGameEngine le moteur du jeu
+- DameDePiqueGameNetorkPlayer le joueur distant en cas de partie réseau
+- DameDePiqueGameNetworkEngine la version du jeu supportant le réseau
 
 # Protocole réseau
+
 
 
