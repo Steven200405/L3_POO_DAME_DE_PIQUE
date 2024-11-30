@@ -59,4 +59,5 @@ La partie continue sur plusieurs manches jusqu’à ce qu’un joueur atteigne o
 
 
 >Le protocole réseau définit les séquences des commandes échangées entre les différentes parties prenantes. Il doit contenir, pour chaque commande, l'expéditeur, le destinataire, le nom de la commande et le contenu du corps de la commande
-![protocole](doc/diagram.png)
+
+![protocole](doc/Diagram.png)
