@@ -11,6 +11,7 @@ Les cartes sont mélangées et distribuées entièrement, chaque joueur recevant
  - 4ème manche: pas de cartes échangé
 
 Puis on continue ce schéma jusqu’à la fin du jeu.
+
 L’ordre des cartes va de la plus faible à la plus forte: 2, 3, 4, 5, 6, 7, 8, 9, 10, Valet, Dame, Roi, As.
 
 ## Déroulé de la partie
