@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>fr.pantheonsorbonne.miage</groupId>
@@ -34,9 +35,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>fr.pantheonsorbonne.miage</groupId>
-			<artifactId>poo-player</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+    		<groupId>fr.pantheonsorbonne.miage</groupId>
+   			<artifactId>poo-player</artifactId>
+    		<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -220,17 +221,17 @@
 		</site>
 	</distributionManagement>
 
-	<repositories>
-		<repository>
-			<id>reposilite-repository-snapshots</id>
-			<name>MIAGE.DEV maven repository snapshots</name>
-			<url>https://maven.miage.dev/snapshots</url>
-		</repository>
+	    <repositories>
+        <repository>
+            <id>reposilite-repository-snapshots</id>
+            <name>MIAGE.DEV maven repository snapshots</name>
+            <url>https://maven.miage.dev/snapshots</url>
+        </repository>
 
-		<repository>
-			<id>reposilite-repository-release</id>
-			<name>MIAGE.DEV maven repository releases</name>
-			<url>https://maven.miage.dev/releases</url>
-		</repository>
-	</repositories>
+        <repository>
+            <id>reposilite-repository-release</id>
+            <name>MIAGE.DEV maven repository releases</name>
+            <url>https://maven.miage.dev/releases</url>
+        </repository>
+    </repositories>
 </project>
