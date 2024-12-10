@@ -1,4 +1,6 @@
 package fr.pantheonsorbonne.miage.game;
+import fr.pantheonsorbonne.miage.enums.CardColor;
+import fr.pantheonsorbonne.miage.enums.CardValue;
 
 public class Player {
     private String name;
