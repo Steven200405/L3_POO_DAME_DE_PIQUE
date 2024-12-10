@@ -46,38 +46,4 @@ public class Deck extends Card {
         return hand;
     }
 
-    public void swap3Cards(Card[] hand1, Card[] hand2) {
-        Card[] swapCardsHand1 = getSwap3Cards(hand1);
-        Card[] swapCardsHand2 = getSwap3Cards(hand2);
-
-        swapCards(hand1, swapCardsHand1, swapCardsHand2);
-        swapCards(hand2, swapCardsHand2, swapCardsHand1);
-
-    }
-
-    private Card[] getSwap3Cards(Card[] hand) {
-        Card[] cardsToGive = new Card[3];
-        Card maxCard = hand[0];
-        int index = 0;
-        while (index != 2) {
-            for (Card card : hand) {
-                if (card.getValue().getRank() > maxCard.getValue().getRank()) {
-                    maxCard = card;
-                }
-            }
-            cardsToGive[index++] = maxCard;
-        }
-        return cardsToGive;
-    }
-
-    private void swapCards(Card[] hand, Card[] swapCardsHand1, Card[] swapCardsHand2) {
-        for (int i = 0; i < hand.length; i++) {
-            for (int j = 0; j < swapCardsHand1.length; j++) {
-                if (hand[i].equals(swapCardsHand1[j])) {
-                    hand[i] = swapCardsHand2[j];
-                }
-            }
-        }
-    }
-
 }
