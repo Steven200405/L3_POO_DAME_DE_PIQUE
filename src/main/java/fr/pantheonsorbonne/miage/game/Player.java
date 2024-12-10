@@ -5,9 +5,11 @@ import fr.pantheonsorbonne.miage.enums.CardValue;
 public class Player {
     private String name;
     private Card[] cards;
+    private int points;
     public Player(String name){
         this.name = name;
         this.cards = new Card[13];
+        this.points = 0;
     }
     public void setCards(Card[] cards){
         this.cards = cards;
