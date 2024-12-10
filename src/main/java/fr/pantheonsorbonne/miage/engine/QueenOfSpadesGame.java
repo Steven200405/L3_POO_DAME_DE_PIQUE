@@ -15,7 +15,7 @@ public class QueenOfSpadesGame {
         System.out.println("test");
     }
     
-    public static void main(String[]... args){
+    public static void main(String[] args){
         QueenOfSpadesGame queenOfSpadesGame = new QueenOfSpadesGame();
         queenOfSpadesGame.play();
     }

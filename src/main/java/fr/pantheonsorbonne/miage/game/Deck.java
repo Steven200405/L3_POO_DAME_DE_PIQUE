@@ -33,9 +33,10 @@ public class Deck  {
 
     public static Card[] giveCards() {
         Card[] hand = new Card[DECK_SIZE];
+        int index = 0;
         for (int i = countDistributedCard; i < cards.length; i++) {
-            hand[i] = cards[i];
-            if (i % DECK_SIZE == 0) {
+            hand[index++] = cards[i];
+            if ((i+1) % DECK_SIZE == 0) {
                 countDistributedCard = countDistributedCard + DECK_SIZE;
                 break;
             }
