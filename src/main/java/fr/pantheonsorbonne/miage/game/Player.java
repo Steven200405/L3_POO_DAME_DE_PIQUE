@@ -1,4 +1,6 @@
 package fr.pantheonsorbonne.miage.game;
+import java.util.Queue;
+
 import fr.pantheonsorbonne.miage.enums.CardColor;
 import fr.pantheonsorbonne.miage.enums.CardValue;
 
@@ -57,5 +59,17 @@ public class Player {
             }
         }
         player.setCards(handle);
+    }
+
+    public Card throwCard(Queue roundDeck){
+        Card bestCards= this.cards[0];
+        if(roundDeck.size()<=4){
+
+        }
+        else{
+            for(Card card : this.cards){
+            }
+        }
+
     }
 }

@@ -44,16 +44,16 @@ public class QueenOfSpadesGame {
             Queue<Card> roundDeck = new LinkedList<>();
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
-            roundDeck.add(firstPlayerInRound.throwCard());
+            roundDeck.add(firstPlayerInRound.throwCard(roundDeck));
             Player secondPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(secondPlayerInRound.throwCard());
+            roundDeck.add(secondPlayerInRound.throwCard(roundDeck));
             Player thirdPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(thirdPlayerInRound.throwCard());
+            roundDeck.add(thirdPlayerInRound.throwCard(roundDeck));
             Player fourthPlayerInRound = players.poll();
             players.offer(fourthPlayerInRound);
-            roundDeck.add(fourthPlayerInRound.throwCard());
+            roundDeck.add(fourthPlayerInRound.throwCard(roundDeck));
 
             getWinnerTurn(null);
             Player winner = new Player(null);
