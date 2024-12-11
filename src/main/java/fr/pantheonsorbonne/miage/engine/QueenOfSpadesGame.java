@@ -1,7 +1,13 @@
 package fr.pantheonsorbonne.miage.engine;
 import fr.pantheonsorbonne.miage.game.Deck;
 import fr.pantheonsorbonne.miage.game.Player;
+import fr.pantheonsorbonne.miage.enums.CardColor;
+import fr.pantheonsorbonne.miage.game.Card;
 import java.util.LinkedList;
+import java.util.Queue;
+import java.util.List;
+import java.util.*;
+
 
 public class QueenOfSpadesGame {
     private Player player1 = new Player("player1");
@@ -9,20 +15,28 @@ public class QueenOfSpadesGame {
     private Player player3 = new Player("player3");
     private Player player4 = new Player("player4");
     private int turn = 1;
+
     public Player searchPlayerWithTwoOfSpade(){
-        Player firstPlayer;
+        Player firstPlayer = null;
+        Iterable<Player> players = new ArrayList<>();
+        for(Player player : players){
+            for(Card card: player.getCards()){
+                if(card.getValue().getRank() == 2 && card.getColor() == CardColor.valueOf("CLUB")){
+                    firstPlayer = player;
+                }
+            }
+        }
         return firstPlayer;
     }
+
     public Queue<Player> orderPlayer(){
-        Player first = searchPlayerWithTwoOfSpade();
-        Queue<Player> queue = new LinkedList<>();
-        queue.add(first);
         
     }
 
     public void getWinnerTurn(Queue<Card> roundDeck){
 
     }
+
     public void play(){
         player1.setCards(Deck.giveCards());
         player2.setCards(Deck.giveCards());
