@@ -3,8 +3,7 @@ import fr.pantheonsorbonne.miage.game.Deck;
 import fr.pantheonsorbonne.miage.game.Player;
 import fr.pantheonsorbonne.miage.enums.CardColor;
 import fr.pantheonsorbonne.miage.game.Card;
-import java.util.LinkedList;
-import java.util.Queue;
+
 import java.util.*;
 
 
@@ -39,15 +38,13 @@ public class QueenOfSpadesGame {
         */
 
         while(true){                
-            Player first = searchPlayerWithTwoOfClub();
-            Queue<Player> players = new LinkedList<>();
+            Player firstPlayer=null;
             if(turn == 1){
-                 players = orderPlayer(first);
+                 firstPlayer = searchPlayerWithTwoOfClub();
             }
-            
-
-
+            Queue<Player> players = orderPlayer(firstPlayer);
             Queue<Card> roundDeck = new LinkedList<>();
+            
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
             roundDeck.add(firstPlayerInRound.throwCard(roundDeck));
