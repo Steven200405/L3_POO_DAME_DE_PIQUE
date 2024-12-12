@@ -1,27 +1,28 @@
 package fr.pantheonsorbonne.miage.game;
-import java.util.Queue;
 
-import fr.pantheonsorbonne.miage.enums.CardColor;
-import fr.pantheonsorbonne.miage.enums.CardValue;
+import fr.pantheonsorbonne.miage.enums.*;
+import java.util.Queue;
 
 public class Player {
     private String name;
     private Card[] cards;
     private int points;
-    public Player(String name){
+
+    public Player(String name) {
         this.name = name;
         this.cards = new Card[13];
         this.points = 0;
     }
-    public void setCards(Card[] cards){
+
+    public void setCards(Card[] cards) {
         this.cards = cards;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public Card[] getCards(){
+    public Card[] getCards() {
         return this.cards;
     }
 
@@ -61,15 +62,102 @@ public class Player {
         player.setCards(handle);
     }
 
-    public Card throwCard(Queue roundDeck){
-        Card bestCards= this.cards[0];
-        if(roundDeck.size()<=4){
+    public Card throwCard(Queue<Card> roundDeck, int turn) {
+        Card bestCards = this.cards[0];
+        Card HighestCardInRoundDeck = getTheHighestCardInRoundDeck(roundDeck);
+        for (Card card : this.cards) {
+            if (haveSameColorInDeck(roundDeck)) {
+                bestCards = playTheBestCardWhenSameColor(roundDeck);
+            } else {
+                if(turn == 1){
+
+                }
+            }
+        }
+        return this.cards[0];
+    }
+
+    private Card playTheBestCardWhenNotSameColorWithoutHeartAndQueenOfSpade(){
+        for(Card card: this.cards){
             
         }
-        else{
-            for(Card card : this.cards){
+    }
+
+    private Card playTheBestCardWhenSameColor(Queue<Card> roundDeck){
+        Card HighestCardInRoundDeck = getTheHighestCardInRoundDeck(roundDeck);
+        Card bestCard=getTheLowestCardInSameColor(roundDeck);
+        for(Card card : this.cards){
+            if(roundDeck.size()==3 && haveHeartOrQueenOfSpadeInRoundDeck(roundDeck)){
+                if(card.getValue().getRank() < HighestCardInRoundDeck.getValue().getRank() && card.getValue().getRank() > bestCard.getValue().getRank() && card.getColor().equals(roundDeck.peek().getColor())){
+                    bestCard = card;
+                }                
+            }
+            else if(roundDeck.size()==3 && !haveHeartOrQueenOfSpadeInRoundDeck(roundDeck)){
+                if(card.getValue().getRank()>bestCard.getValue().getRank() && card.getColor().equals(roundDeck.peek().getColor())){
+                    bestCard = card;
+                }
+            }
+            else if(roundDeck.size()<3 && haveHeartOrQueenOfSpadeInRoundDeck(roundDeck)){
+                if(card.getValue().getRank() < HighestCardInRoundDeck.getValue().getRank() && card.getValue().getRank() > bestCard.getValue().getRank() && card.getColor().equals(roundDeck.peek().getColor())){
+                    bestCard = card;
+                }    
+            }
+            else if(roundDeck.size() <3 && !haveHeartOrQueenOfSpadeInRoundDeck(roundDeck)){
+                if(card.getValue().getRank()>bestCard.getValue().getRank() && card.getColor().equals(roundDeck.peek().getColor())){
+                    bestCard = card;
+                }
+            }
+        }
+        return bestCard;
+    }
+
+    private Card getTheLowestCardInSameColor(Queue<Card> roundDeck){
+        Card lowestCard = this.cards[0];
+        for(Card card: this.cards){
+            if(!lowestCard.getColor().equals(roundDeck.peek().getColor())){
+                lowestCard = card;
+            }
+            else{
+                break;
             }
         }
 
+        for(Card card: this.cards){
+            if(card.getValue().getRank() <= lowestCard.getValue().getRank() && card.getColor().equals(roundDeck.peek().getColor())){
+                lowestCard=card;
+            }
+        }
+        return lowestCard;
+    }
+
+    private boolean haveHeartOrQueenOfSpadeInRoundDeck(Queue<Card> roundDeck){
+        for(Card cardInDeck: roundDeck){
+            if(cardInDeck.getColor().equals(CardColor.valueOf("HEART")) || (cardInDeck.getValue().getRank()==12 && cardInDeck.getColor().equals(CardColor.valueOf("SPADE")))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean haveSameColorInDeck(Queue<Card> roundDeck) {
+        Card firstPlayedCard = roundDeck.peek();
+        for (Card card : this.cards) {
+            if (card.getColor().equals(firstPlayedCard.getColor())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Card getTheHighestCardInRoundDeck(Queue<Card> roundDeck) {
+        Card HighestCardInRoundDeck = roundDeck.peek();
+        Card firstPlayedCard = roundDeck.peek();
+        for (Card cardInDeck : roundDeck) {
+            if (cardInDeck.getValue().getRank() > HighestCardInRoundDeck.getValue().getRank()
+                    && cardInDeck.getColor().equals(firstPlayedCard.getColor())) {
+                HighestCardInRoundDeck = cardInDeck;
+            }
+        }
+        return HighestCardInRoundDeck;
     }
 }

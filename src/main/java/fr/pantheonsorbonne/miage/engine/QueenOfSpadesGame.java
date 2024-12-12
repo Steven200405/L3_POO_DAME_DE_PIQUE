@@ -47,16 +47,16 @@ public class QueenOfSpadesGame {
             
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
-            roundDeck.add(firstPlayerInRound.throwCard(roundDeck));
+            roundDeck.add(firstPlayerInRound.throwCard(roundDeck,turn));
             Player secondPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(secondPlayerInRound.throwCard(roundDeck));
+            roundDeck.add(secondPlayerInRound.throwCard(roundDeck,turn));
             Player thirdPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(thirdPlayerInRound.throwCard(roundDeck));
+            roundDeck.add(thirdPlayerInRound.throwCard(roundDeck,turn));
             Player fourthPlayerInRound = players.poll();
             players.offer(fourthPlayerInRound);
-            roundDeck.add(fourthPlayerInRound.throwCard(roundDeck));
+            roundDeck.add(fourthPlayerInRound.throwCard(roundDeck,turn));
 
             getWinnerTurn(null);
             Player winner = new Player(null);
