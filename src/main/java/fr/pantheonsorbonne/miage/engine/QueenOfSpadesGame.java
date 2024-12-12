@@ -87,27 +87,12 @@ public class QueenOfSpadesGame {
 
     public Queue<Player> orderPlayer(Player first){
         Queue<Player> queue = new LinkedList<>();
-        queue.add(first);
-        if(first.equals(player1)){
-            queue.add(player2);
-            queue.add(player3);
-            queue.add(player4);
-        }
-        else if (first.equals(player2)){
-            queue.add(player3);
-            queue.add(player4);
-            queue.add(player1);
-
-        }
-        else if (first.equals(player3)){
-            queue.add(player4);
-            queue.add(player1);
-            queue.add(player2);
-        }
-        else if(first.equals(player4)){      
-            queue.add(player1);      
-            queue.add(player2);
-            queue.add(player3);
+        queue.addAll(Arrays.asList(player1, player2, player3, player4));
+        Player playerPeeked = queue.peek();
+        while(!first.equals(playerPeeked)){
+            queue.poll();
+            queue.offer(playerPeeked);
+            playerPeeked = queue.peek();
         }
         return queue;
     }
