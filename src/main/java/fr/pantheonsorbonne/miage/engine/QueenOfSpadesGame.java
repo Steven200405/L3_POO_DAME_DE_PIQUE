@@ -5,7 +5,6 @@ import fr.pantheonsorbonne.miage.enums.CardColor;
 import fr.pantheonsorbonne.miage.game.Card;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.List;
 import java.util.*;
 
 
@@ -39,8 +38,15 @@ public class QueenOfSpadesGame {
         }
         */
 
-        while(true){
-            final Queue<Player> players = orderPlayer();
+        while(true){                
+            Player first = searchPlayerWithTwoOfClub();
+            Queue<Player> players = new LinkedList<>();
+            if(turn == 1){
+                 players = orderPlayer(first);
+            }
+            
+
+
             Queue<Card> roundDeck = new LinkedList<>();
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
@@ -66,7 +72,7 @@ public class QueenOfSpadesGame {
 
     }
 
-    public Player searchPlayerWithTwoOfSpade(){
+    public Player searchPlayerWithTwoOfClub(){
         Player firstPlayer = null;
         Iterable<Player> players = new ArrayList<>();
         for(Player player : players){
@@ -79,8 +85,7 @@ public class QueenOfSpadesGame {
         return firstPlayer;
     }
 
-    public Queue<Player> orderPlayer(){
-        Player first = searchPlayerWithTwoOfSpade();
+    public Queue<Player> orderPlayer(Player first){
         Queue<Player> queue = new LinkedList<>();
         queue.add(first);
         if(first.equals(player1)){
