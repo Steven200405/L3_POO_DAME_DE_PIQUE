@@ -14,10 +14,51 @@ public class QueenOfSpadesGame {
     private Player player4 = new Player("player4");
     private int turn = 1;
 
-    
+    public Card getWinnerCard(Queue<Card> roundDeck){
+        Card highCardValue = roundDeck.peek();
+        Card currentCard = roundDeck.peek();
+        while(roundDeck.size() !=0){
+            if (currentCard.getValue().ordinal() > highCardValue.getValue().ordinal()){
+                highCardValue = currentCard;
+            }
+            currentCard = roundDeck.peek();
+        }
+        return highCardValue;
+    }
 
-    public void getWinnerTurn(Queue<Card> roundDeck){
+    public int givePointsToWinnerTurn(Queue<Card> roundDeck){
+        int countPointsHeartCards = 0;
+        Card currentCard = roundDeck.peek();
+        while (roundDeck.size() !=0){
+            if(currentCard.getColor().toString().equals("Spade")){
+                if(currentCard.getValue().toString().equals("Queen")){
+                    countPointsHeartCards += 13;
+                }
+            }
+            else if (currentCard.getColor().toString().equals("Heart")){
+                countPointsHeartCards++;
+            }
+            roundDeck.poll();
+            currentCard = roundDeck.peek();
+        }
+        return countPointsHeartCards;
+    }
 
+    public Player getWinnerTurn(Queue<Player> playersOrder, Queue<Card> roundDeck){
+        Player winnerPlayer = null;
+        Card winnerCard = getWinnerCard(roundDeck);
+        Card currentCard = roundDeck.peek();
+        Player currentPlayer = playersOrder.peek();
+        while(currentCard != winnerCard){
+            roundDeck.poll();
+            playersOrder.poll();
+            currentCard = roundDeck.peek();
+            currentPlayer = playersOrder.peek();
+            
+        }
+        winnerPlayer = currentPlayer;
+        winnerPlayer.setPoints(givePointsToWinnerTurn(roundDeck));
+        return winnerPlayer;
     }
 
     public void play(){
@@ -36,9 +77,8 @@ public class QueenOfSpadesGame {
             swap3Cards(player4);
         }
         */
-
+        Player firstPlayer=null;
         while(true){                
-            Player firstPlayer=null;
             if(turn == 1){
                  firstPlayer = searchPlayerWithTwoOfClub();
             }
@@ -47,24 +87,24 @@ public class QueenOfSpadesGame {
             
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
-            roundDeck.add(firstPlayerInRound.throwCard(roundDeck));
+            roundDeck.offer(throwCard(Card card));
             Player secondPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(secondPlayerInRound.throwCard(roundDeck));
+            roundDeck.offer(throwCard(Card card));
             Player thirdPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
-            roundDeck.add(thirdPlayerInRound.throwCard(roundDeck));
+            roundDeck.offer(throwCard(Card card));
             Player fourthPlayerInRound = players.poll();
             players.offer(fourthPlayerInRound);
-            roundDeck.add(fourthPlayerInRound.throwCard(roundDeck));
+            roundDeck.offer(throwCard(Card card));
 
-            getWinnerTurn(null);
-            Player winner = new Player(null);
-
+            Player winner = getWinnerTurn(players, roundDeck);
+            firstPlayer = winner;
             if (fourthPlayerInRound.getCards().length == 0){
                 System.out.println(winner.getName() + "gagné");
                 break;
             }
+            turn++;
         }
 
     }

@@ -8,6 +8,7 @@ public class Player {
     private String name;
     private Card[] cards;
     private int points;
+
     public Player(String name){
         this.name = name;
         this.cards = new Card[13];
@@ -17,12 +18,20 @@ public class Player {
         this.cards = cards;
     }
 
+    public void setPoints(int points){
+        this.points = points;
+    }
+
     public String getName(){
         return this.name;
     }
 
     public Card[] getCards(){
         return this.cards;
+    }
+
+    public int getPoints(){
+        return this.points;
     }
 
     public void swap3Cards(Player otherPlayer) {
