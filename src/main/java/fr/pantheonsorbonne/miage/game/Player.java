@@ -14,6 +14,14 @@ public class Player {
         this.points = 0;
     }
 
+    public void setPoints(int points){
+        this.points = points;
+    }
+
+    public int getPoints(){
+        return this.points;
+    }
+
     public void setCards(Card[] cards) {
         this.cards = cards;
     }
