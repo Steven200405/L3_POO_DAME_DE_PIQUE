@@ -87,6 +87,7 @@ public class QueenOfSpadesGame {
             
             Player firstPlayerInRound = players.poll();
             players.offer(firstPlayerInRound);
+
             roundDeck.offer(throwCard(Card card));
             Player secondPlayerInRound = players.poll();
             players.offer(secondPlayerInRound);
